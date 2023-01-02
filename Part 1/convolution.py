@@ -260,12 +260,33 @@ filter_3 = np.array([[1, 0, -1],
                      [1, 0, -1]])
 
 
+#Sobel filter to detect horizontal changes on image
+filter_4 = np.array([[1, 2, 1],
+                     [0, 0, 0],
+                     [-1, -2, -1]])
+
+
+#Prewitt filter to detect horizontal changes on image
+filter_5 = np.array([[1, 1, 1],
+                     [0, 0, 0],
+                     [-1, -1, -1]])
+
+
+#Gaussian blur filter
+filter_6 = (1 / 16) * np.array([[1, 2, 1],
+                                [2, 4, 2],
+                                [1, 2, 1]])
+
 # Check point
 # Showing shapes of the filters
 print()
 print('Shape of the filter 1 is: {0}'.format(filter_1.shape))
 print('Shape of the filter 2 is: {0}'.format(filter_2.shape))
 print('Shape of the filter 3 is: {0}'.format(filter_3.shape))
+print('Shape of the filter 4 is: {0}'.format(filter_4.shape))
+print('Shape of the filter 5 is: {0}'.format(filter_5.shape))
+print('Shape of the filter 6 is: {0}'.format(filter_6.shape))
+
 
 """
 End of:
@@ -281,11 +302,13 @@ Convolution operation to GRAY images
 # Preparing zero valued arrays for convolved output images (feature maps)
 # Dimensions are the same with input image according to chosen hyperparameters
 # Passing as argument tuple with needed shape
-# Extending dimension to store processed images by three filters
+# Extending dimension to store processed images by six filters
 output_image1_GRAY = np.zeros(tuple([3]) + image1_GRAY.shape)
 output_image2_GRAY = np.zeros(tuple([3]) + image2_GRAY.shape)
 output_image3_GRAY = np.zeros(tuple([3]) + image3_GRAY.shape)
-
+# output_image4_GRAY = np.zeros(tuple([3]) + image4_GRAY.shape)
+# output_image5_GRAY = np.zeros(tuple([3]) + image5_GRAY.shape)
+# output_image6_GRAY = np.zeros(tuple([3]) + image6_GRAY.shape)
 
 # Check point
 # Showing shapes of the output images
@@ -293,6 +316,9 @@ print()
 print('Shape of the output images 1 is: {0}'.format(output_image1_GRAY.shape))
 print('Shape of the output images 2 is: {0}'.format(output_image2_GRAY.shape))
 print('Shape of the output images 3 is: {0}'.format(output_image3_GRAY.shape))
+# print('Shape of the output images 4 is: {0}'.format(output_image4_GRAY.shape))
+# print('Shape of the output images 5 is: {0}'.format(output_image5_GRAY.shape))
+# print('Shape of the output images 6 is: {0}'.format(output_image6_GRAY.shape))
 
 # Implementing convolution operation to GRAY images
 
@@ -316,7 +342,12 @@ for i in tqdm(range(image1_GRAY_pad.shape[0] - 2)):
         output_image1_GRAY[1, i, j] = np.sum(patch * filter_2)
         # With filter_3
         output_image1_GRAY[2, i, j] = np.sum(patch * filter_3)
-
+        # With filter_4
+        output_image1_GRAY[0, i, j] = np.sum(patch * filter_4)
+        # With filter_5
+        output_image1_GRAY[1, i, j] = np.sum(patch * filter_5)
+        # With filter_6
+        output_image1_GRAY[2, i, j] = np.sum(patch * filter_6)
 
 # GRAY image 2
 # Sliding through entire input (that is with pad frame) by different filters
@@ -338,7 +369,12 @@ for i in tqdm(range(image2_GRAY_pad.shape[0] - 2)):
         output_image2_GRAY[1, i, j] = np.sum(patch * filter_2)
         # With filter_3
         output_image2_GRAY[2, i, j] = np.sum(patch * filter_3)
-
+        # With filter_4
+        output_image2_GRAY[0, i, j] = np.sum(patch * filter_4)
+        # With filter_5
+        output_image2_GRAY[1, i, j] = np.sum(patch * filter_5)
+        # With filter_6
+        output_image2_GRAY[2, i, j] = np.sum(patch * filter_6)
 
 # GRAY image 3
 # Sliding through entire input (that is with pad frame) by different filters
@@ -360,7 +396,12 @@ for i in tqdm(range(image3_GRAY_pad.shape[0] - 2)):
         output_image3_GRAY[1, i, j] = np.sum(patch * filter_2)
         # With filter_3
         output_image3_GRAY[2, i, j] = np.sum(patch * filter_3)
-
+        # With filter_4
+        output_image3_GRAY[0, i, j] = np.sum(patch * filter_4)
+        # With filter_5
+        output_image3_GRAY[1, i, j] = np.sum(patch * filter_5)
+        # With filter_6
+        output_image3_GRAY[2, i, j] = np.sum(patch * filter_6)
 
 """
 End of:
@@ -413,12 +454,12 @@ Plotting resulted images with detected edges
 """
 
 # Setting default size of the plot
-plt.rcParams['figure.figsize'] = (18.0, 10.0)
+plt.rcParams['figure.figsize'] = (10.0, 10.0)
 
 
 # Defining a figure object with number of needed subplots
-figure, ax = plt.subplots(nrows=3, ncols=4)
-# ax is a (3, 4) Numpy array; to access specific subplot we call it by ax[0, 0]
+figure, ax = plt.subplots(nrows=3, ncols=7)
+# ax is a (3, 7) Numpy array; to access specific subplot we call it by ax[0, 0]
 
 
 # Adjusting first column with GRAY images
@@ -444,17 +485,35 @@ ax[0, 3].imshow(output_image1_GRAY[2], cmap=plt.get_cmap('gray'))
 ax[1, 3].imshow(output_image2_GRAY[2], cmap=plt.get_cmap('gray'))
 ax[2, 3].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
 
+# Adjusting fourth column with edges by filter 4: Sobel
+ax[0, 4].imshow(output_image1_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[1, 4].imshow(output_image2_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[2, 4].imshow(output_image3_GRAY[0], cmap=plt.get_cmap('gray'))
+
+# Adjusting fourth column with edges by filter 5: Prewitt-y
+ax[0, 5].imshow(output_image1_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[1, 5].imshow(output_image2_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[2, 5].imshow(output_image3_GRAY[1], cmap=plt.get_cmap('gray'))
+
+# Adjusting fourth column with edges by filter 6: Gaussian Blur
+ax[0, 6].imshow(output_image1_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[1, 6].imshow(output_image2_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[2, 6].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
+
 
 # Giving names to columns
-ax[0, 0].set_title('Input GRAY', fontsize=16)
-ax[0, 1].set_title('Edges by Sobel-x', fontsize=16)
-ax[0, 2].set_title('Edges by Laplacian', fontsize=16)
-ax[0, 3].set_title('Edges by Prewitt-x', fontsize=16)
+ax[0, 0].set_title('Input GRAY', fontsize=10)
+ax[0, 1].set_title('Edges by Sobel-x', fontsize=10)
+ax[0, 2].set_title('Edges by Laplacian', fontsize=10)
+ax[0, 3].set_title('Edges by Prewitt-x', fontsize=10)
+ax[0, 4].set_title('Edges by Sobel', fontsize=10)
+ax[0, 3].set_title('Edges by Prewitt-y', fontsize=10)
+ax[0, 3].set_title('Edges by Gaussian Blur', fontsize=10)
 
 
 # Hiding axes to all subplots
 for i in range(3):
-    for j in range(4):
+    for j in range(7):
         ax[i, j].axis('off')
 
 
@@ -470,7 +529,7 @@ plt.subplots_adjust(left=0.1, right=0.9,
 # r'images\plot_convolution.png'
 # or:
 # 'images\\plot_convolution.png'
-figure.savefig('/home/souheil/Image-AI-Python/Part 1/plot_convolution.png' )
+figure.savefig('/home/souheil/Image-AI-Python/Part 1/plot_convolution-with-filters.png' )
 
 # Giving name to the window with figure
 figure.canvas.manager.set_window_title('Images with detected edges')
