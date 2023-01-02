@@ -511,10 +511,10 @@ ax[0, 3].set_title('Edges by Prewitt-y', fontsize=16)
 ax[0, 3].set_title('Edges by Gaussian Blur', fontsize=16)
 
 
-# Hiding axes to all subplots
-for i in range(3):
-    for j in range(3):
-        ax[i, j].axis('off')
+# # Hiding axes to all subplots
+# for i in range(3):
+#     for j in range(3):
+#         ax[i, j].axis('off')
 
 
 # Adjusting distance between subplots
