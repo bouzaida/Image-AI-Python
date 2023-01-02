@@ -454,7 +454,7 @@ Plotting resulted images with detected edges
 """
 
 # Setting default size of the plot
-plt.rcParams['figure.figsize'] = (10.0, 10.0)
+plt.rcParams['figure.figsize'] = (18.0, 10.0)
 
 
 # Defining a figure object with number of needed subplots
@@ -502,13 +502,13 @@ ax[2, 6].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
 
 
 # Giving names to columns
-ax[0, 0].set_title('Input GRAY', fontsize=10)
-ax[0, 1].set_title('Edges by Sobel-x', fontsize=10)
-ax[0, 2].set_title('Edges by Laplacian', fontsize=10)
-ax[0, 3].set_title('Edges by Prewitt-x', fontsize=10)
-ax[0, 4].set_title('Edges by Sobel', fontsize=10)
-ax[0, 3].set_title('Edges by Prewitt-y', fontsize=10)
-ax[0, 3].set_title('Edges by Gaussian Blur', fontsize=10)
+ax[0, 0].set_title('Input GRAY', fontsize=16)
+ax[0, 1].set_title('Edges by Sobel-x', fontsize=16)
+ax[0, 2].set_title('Edges by Laplacian', fontsize=16)
+ax[0, 3].set_title('Edges by Prewitt-x', fontsize=16)
+ax[0, 4].set_title('Edges by Sobel', fontsize=16)
+ax[0, 3].set_title('Edges by Prewitt-y', fontsize=16)
+ax[0, 3].set_title('Edges by Gaussian Blur', fontsize=16)
 
 
 # Hiding axes to all subplots
