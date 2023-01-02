@@ -48,9 +48,9 @@ Reading input images
 # r'images\cat.png'
 # or:
 # 'images\\cat.png'
-image1_BGR = cv2.imread('images/cat.png')
-image2_BGR = cv2.imread('images/horse.jpg')
-image3_BGR = cv2.imread('images/tiger.bmp')
+image1_BGR = cv2.imread('/home/souheil/Image-AI-Python/data/data 1/Images/cat.png')
+image2_BGR = cv2.imread('/home/souheil/Image-AI-Python/data/data 1/Images/horse.jpg')
+image3_BGR = cv2.imread('/home/souheil/Image-AI-Python/data/data 1/Images/tiger.bmp')
 
 
 # Check point
@@ -118,13 +118,13 @@ print('Pixels of GRAY image converted by formula:',
       np.around(image11_GRAY[0, :9], decimals=0))
 # Making float numbers as integers
 print('Pixels of GRAY image converted by formula:',
-      np.around(image11_GRAY[0, :9], decimals=0).astype(np.int))
+      np.around(image11_GRAY[0, :9], decimals=0).astype(np.int64))
 
 
 # Rounding float numbers and making them as integers for all images
-image11_GRAY = np.around(image11_GRAY, decimals=0).astype(np.int)
-image22_GRAY = np.around(image22_GRAY, decimals=0).astype(np.int)
-image33_GRAY = np.around(image33_GRAY, decimals=0).astype(np.int)
+image11_GRAY = np.around(image11_GRAY, decimals=0).astype(np.int64)
+image22_GRAY = np.around(image22_GRAY, decimals=0).astype(np.int64)
+image33_GRAY = np.around(image33_GRAY, decimals=0).astype(np.int64)
 
 """
 End of:
@@ -181,7 +181,7 @@ for i in range(3):
 plt.tight_layout()
 
 # Giving the name to the window with figure
-figure.canvas.set_window_title('Coloured and GRAY images')
+figure.canvas.manager.set_window_title('Coloured and GRAY images')
 
 # Showing the plot
 plt.show()
@@ -470,10 +470,10 @@ plt.subplots_adjust(left=0.1, right=0.9,
 # r'images\plot_convolution.png'
 # or:
 # 'images\\plot_convolution.png'
-figure.savefig('images/plot_convolution.png')
+figure.savefig('/home/souheil/Image-AI-Python/Part 1/plot_convolution.png' )
 
 # Giving name to the window with figure
-figure.canvas.set_window_title('Images with detected edges')
+figure.canvas.manager.set_window_title('Images with detected edges')
 
 # Showing the plot
 plt.show()
