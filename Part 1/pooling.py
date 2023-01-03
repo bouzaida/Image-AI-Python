@@ -46,7 +46,7 @@ Reading input image and converting into GRAY
 # r'images\cat.png'
 # or:
 # 'images\\cat.png'
-image_BGR = cv2.imread('images/cat.png')
+image_BGR = cv2.imread('/home/souheil/Image-AI-Python/data/data 1/Images/cat.png')
 
 
 # Converting input image to GRAY by OpenCV function
@@ -178,10 +178,10 @@ plt.subplots_adjust(left=0.1, right=0.9,
 # r'images\plot_pooling.png'
 # or:
 # 'images\\plot_pooling.png'
-figure.savefig('images/plot_pooling.png')
+figure.savefig('/home/souheil/Image-AI-Python/Part 1/plot_pooling.png')
 
 # Giving name to the window with figure
-figure.canvas.set_window_title('Pooling operation to GRAY image')
+figure.canvas.manager.set_window_title('Pooling operation to GRAY image')
 
 # Showing the plot
 plt.show()
