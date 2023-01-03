@@ -504,11 +504,11 @@ ax[2, 6].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
 # Giving names to columns
 ax[0, 0].set_title('Input GRAY', fontsize=16)
 ax[0, 1].set_title('Edges by Sobel-x', fontsize=16)
-ax[0, 2].set_title('Edges by Laplacian', fontsize=16)
-ax[0, 3].set_title('Edges by Prewitt-x', fontsize=16)
-ax[0, 4].set_title('Edges by Sobel', fontsize=16)
-ax[0, 3].set_title('Edges by Prewitt-y', fontsize=16)
-ax[0, 3].set_title('Edges by Gaussian Blur', fontsize=16)
+ax[0, 2].set_title('Edges by Laplacian', fontsize=8)
+ax[0, 3].set_title('Edges by Prewitt-x', fontsize=8)
+ax[0, 4].set_title('Edges by Sobel', fontsize=8)
+ax[0, 5].set_title('Edges by Prewitt-y', fontsize=8)
+ax[0, 6].set_title('Edges by Gaussian Blur', fontsize=8)
 
 
 # Hiding axes to all subplots
