@@ -180,6 +180,13 @@ for i in range(3):
 # Adjusting distance between subplots
 plt.tight_layout()
 
+# Saving the plot
+# (!) On Windows, the path might look like following:
+# r'images\plot_convolution.png'
+# or:
+# 'images\\plot_convolution.png'
+figure.savefig('/home/souheil/Image-AI-Python/Part 1/gray-image.png' )
+
 # Giving the name to the window with figure
 figure.canvas.manager.set_window_title('Coloured and GRAY images')
 
@@ -458,62 +465,69 @@ plt.rcParams['figure.figsize'] = (20.0, 12.0)
 
 
 # Defining a figure object with number of needed subplots
-figure, ax = plt.subplots(nrows=3, ncols=7)
+figure, ax = plt.subplots(nrows=3, ncols=8)
 # ax is a (3, 7) Numpy array; to access specific subplot we call it by ax[0, 0]
 
 
+# Adjusting first column with coloured images
+# Converting at the same time images from BGR to RGB
+ax[0, 0].imshow(cv2.cvtColor(image1_BGR, cv2.COLOR_BGR2RGB))
+ax[1, 0].imshow(cv2.cvtColor(image2_BGR, cv2.COLOR_BGR2RGB))
+ax[2, 0].imshow(cv2.cvtColor(image3_BGR, cv2.COLOR_BGR2RGB))
+
 # Adjusting first column with GRAY images
-ax[0, 0].imshow(image1_GRAY, cmap=plt.get_cmap('gray'))
-ax[1, 0].imshow(image2_GRAY, cmap=plt.get_cmap('gray'))
-ax[2, 0].imshow(image3_GRAY, cmap=plt.get_cmap('gray'))
+ax[0, 1].imshow(image1_GRAY, cmap=plt.get_cmap('gray'))
+ax[1, 1].imshow(image2_GRAY, cmap=plt.get_cmap('gray'))
+ax[2, 1].imshow(image3_GRAY, cmap=plt.get_cmap('gray'))
 
 
 # Adjusting second column with edges by filter 1: Sobel-x
-ax[0, 1].imshow(output_image1_GRAY[0], cmap=plt.get_cmap('gray'))
-ax[1, 1].imshow(output_image2_GRAY[0], cmap=plt.get_cmap('gray'))
-ax[2, 1].imshow(output_image3_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[0, 2].imshow(output_image1_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[1, 2].imshow(output_image2_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[2, 2].imshow(output_image3_GRAY[0], cmap=plt.get_cmap('gray'))
 
 
 # Adjusting third column with edges by filter 2: Laplacian
-ax[0, 2].imshow(output_image1_GRAY[1], cmap=plt.get_cmap('gray'))
-ax[1, 2].imshow(output_image2_GRAY[1], cmap=plt.get_cmap('gray'))
-ax[2, 2].imshow(output_image3_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[0, 3].imshow(output_image1_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[1, 3].imshow(output_image2_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[2, 3].imshow(output_image3_GRAY[1], cmap=plt.get_cmap('gray'))
 
 
 # Adjusting fourth column with edges by filter 3: Prewitt-x
-ax[0, 3].imshow(output_image1_GRAY[2], cmap=plt.get_cmap('gray'))
-ax[1, 3].imshow(output_image2_GRAY[2], cmap=plt.get_cmap('gray'))
-ax[2, 3].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[0, 4].imshow(output_image1_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[1, 4].imshow(output_image2_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[2, 4].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
 
 # Adjusting fourth column with edges by filter 4: Sobel
-ax[0, 4].imshow(output_image1_GRAY[0], cmap=plt.get_cmap('gray'))
-ax[1, 4].imshow(output_image2_GRAY[0], cmap=plt.get_cmap('gray'))
-ax[2, 4].imshow(output_image3_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[0, 5].imshow(output_image1_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[1, 5].imshow(output_image2_GRAY[0], cmap=plt.get_cmap('gray'))
+ax[2, 5].imshow(output_image3_GRAY[0], cmap=plt.get_cmap('gray'))
 
 # Adjusting fourth column with edges by filter 5: Prewitt-y
-ax[0, 5].imshow(output_image1_GRAY[1], cmap=plt.get_cmap('gray'))
-ax[1, 5].imshow(output_image2_GRAY[1], cmap=plt.get_cmap('gray'))
-ax[2, 5].imshow(output_image3_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[0, 6].imshow(output_image1_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[1, 6].imshow(output_image2_GRAY[1], cmap=plt.get_cmap('gray'))
+ax[2, 6].imshow(output_image3_GRAY[1], cmap=plt.get_cmap('gray'))
 
 # Adjusting fourth column with edges by filter 6: Gaussian Blur
-ax[0, 6].imshow(output_image1_GRAY[2], cmap=plt.get_cmap('gray'))
-ax[1, 6].imshow(output_image2_GRAY[2], cmap=plt.get_cmap('gray'))
-ax[2, 6].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[0, 7].imshow(output_image1_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[1, 7].imshow(output_image2_GRAY[2], cmap=plt.get_cmap('gray'))
+ax[2, 7].imshow(output_image3_GRAY[2], cmap=plt.get_cmap('gray'))
 
 
 # Giving names to columns
-ax[0, 0].set_title('Input GRAY', fontsize=8)
-ax[0, 1].set_title('Edges by Sobel-x', fontsize=8)
-ax[0, 2].set_title('Edges by Laplacian', fontsize=8)
-ax[0, 3].set_title('Edges by Prewitt-x', fontsize=8)
-ax[0, 4].set_title('Edges by Sobel', fontsize=8)
-ax[0, 5].set_title('Edges by Prewitt-y', fontsize=8)
-ax[0, 6].set_title('Edges by Gaussian Blur', fontsize=8)
+ax[0, 0].set_title('Coloured', fontsize=8)
+ax[0, 1].set_title('Input GRAY', fontsize=8)
+ax[0, 2].set_title('Edges by Sobel-x', fontsize=8)
+ax[0, 3].set_title('Edges by Laplacian', fontsize=8)
+ax[0, 4].set_title('Edges by Prewitt-x', fontsize=8)
+ax[0, 5].set_title('Edges by Sobel', fontsize=8)
+ax[0, 6].set_title('Edges by Prewitt-y', fontsize=8)
+ax[0, 7].set_title('Edges by Gaussian Blur', fontsize=8)
 
 
 # Hiding axes to all subplots
 for i in range(3):
-    for j in range(7):
+    for j in range(8):
         ax[i, j].axis('off')
 
 
@@ -529,7 +543,7 @@ plt.subplots_adjust(left=0.1, right=0.9,
 # r'images\plot_convolution.png'
 # or:
 # 'images\\plot_convolution.png'
-figure.savefig('/home/souheil/Image-AI-Python/Part 1/plot_convolution-with-filters.png' )
+figure.savefig('/home/souheil/Image-AI-Python/Part 1/plot_convolution-colored-filters.png' )
 
 # Giving name to the window with figure
 figure.canvas.manager.set_window_title('Images with detected edges')
